@@ -17,17 +17,19 @@
                 {% endfor %}
             </ul>
             {% else %}
-            <strong>No pages currently in category.</strong>
+            <strong>No pages currently in category.</strong><br />
             {% endif %}
+            <a href="add_page/">Add a New Page</a><br />
         {% else %}
-            The specified category does not exist.
+            The specified category does not exist.<br />
         {% endif %}
         </div>
+        
 
         <div>
             <a href="http://127.0.0.1:8000/">Home page</a>                  
         </div> 
-        
+
     </body>
 
 </html>
