@@ -17,6 +17,7 @@
         </div>
 
         <div>
+        <h2> Most liked categories: </h2>
         {% if categories %}
             <ul>
                 {% for category in categories %}
@@ -29,7 +30,23 @@
         {% else %}
             <strong>There are no categories present.</strong>
         {% endif %}
-        </div>    
+        </div>
+
+        <div>
+            <h2> Most viewed pages: </h2>
+            {% if pages %}
+                <ul>
+                    {% for page in pages %}
+                    <li>
+                        <!-- The following line is changed to add an HTML hyperlink -->
+                        <a href="{{ page.url }}/">{{ page.title }}</a>
+                    </li>                    
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>There are no pages present.</strong>
+            {% endif %}
+            </div>  
 
         <div>
             <a href="/rango/about/">About</a><br />
