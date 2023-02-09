@@ -1,60 +1,52 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
 
-{% load staticfiles %} <!-- New line -->
+{% block title_block %}
+    Homepage
+{% endblock %}
 
-<html>
+{% block body_block %}
+    <h1>Rango says...</h1>
 
-    <head>
-        <title>Rango</title>
-    </head>
+    <div>
+        hey there partner! <br />
+        <strong>{{ boldmessage }}</strong><br />
+    </div>
 
-    <body>
-        <h1>Rango says...</h1>
-
-        <div>
-            hey there partner! <br />
-            <strong>{{ boldmessage }}</strong><br />
-        </div>
-
-        <div>
+    <div>
         <h2> Most liked categories: </h2>
         {% if categories %}
             <ul>
                 {% for category in categories %}
                 <li>
                     <!-- The following line is changed to add an HTML hyperlink -->
-                    <a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
+                    <a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
                 </li>                    
                 {% endfor %}
             </ul>
         {% else %}
             <strong>There are no categories present.</strong>
         {% endif %}
-        </div>
+    </div>
 
-        <div>
-            <h2> Most viewed pages: </h2>
-            {% if pages %}
-                <ul>
-                    {% for page in pages %}
-                    <li>
-                        <!-- The following line is changed to add an HTML hyperlink -->
-                        <a href="{{ page.url }}/">{{ page.title }}</a>
-                    </li>                    
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <strong>There are no pages present.</strong>
-            {% endif %}
-            </div>  
+    <div>
+        <h2> Most viewed pages: </h2>
+        {% if pages %}
+            <ul>
+                {% for page in pages %}
+                <li>
+                    <!-- The following line is changed to add an HTML hyperlink -->
+                    <a href="{{ page.url }}/">{{ page.title }}</a>
+                </li>                    
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no pages present.</strong>
+        {% endif %}
+    </div>  
 
-        <div>
-            <a href="/rango/about/">About</a><br />
-            <a href="/rango/add_category/">Add a New Category</a><br />
-            <img src="{% static 'images/baby.jpg' %}"
-                alt="The Cringe Ass Nae Nae Baby" /> <!-- New line -->
-
-        </div>
-    </body>
-
-</html>
+    <div>
+        <img src="{% static 'images/baby.jpg' %}"
+            alt="The Cringe Ass Nae Nae Baby" /> <!-- New line -->
+    </div>
+{% endblock %}
